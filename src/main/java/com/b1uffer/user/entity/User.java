@@ -1,4 +1,6 @@
 package com.b1uffer.user.entity;
 
-public class User {
+import com.b1uffer.base.BaseEntity;
+
+public class User extends BaseEntity {
 }
