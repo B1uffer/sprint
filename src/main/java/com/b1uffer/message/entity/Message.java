@@ -10,12 +10,12 @@ public class Message extends BaseEntity {
     /**
      * 메시지 내용
      */
-    public String text;
+    private String text;
 
     /**
      * 메세지 쓴놈
      */
-    public User user;
+    private User user;
 
     /**
      * setter
