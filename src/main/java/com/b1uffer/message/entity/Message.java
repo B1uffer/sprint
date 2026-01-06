@@ -3,7 +3,6 @@ package com.b1uffer.message.entity;
 import com.b1uffer.base.BaseEntity;
 import com.b1uffer.user.entity.User;
 
-import java.time.Instant;
 import java.util.UUID;
 
 public class Message extends BaseEntity {
@@ -20,7 +19,7 @@ public class Message extends BaseEntity {
     /**
      * setter
      */
-    public Message(UUID id, Instant createdAt, Instant updatedAt) {
+    public Message(UUID id, Long createdAt, Long updatedAt) {
         this.id = id;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
