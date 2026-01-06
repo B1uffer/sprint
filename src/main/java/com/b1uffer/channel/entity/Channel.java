@@ -2,7 +2,6 @@ package com.b1uffer.channel.entity;
 
 import com.b1uffer.base.BaseEntity;
 
-import java.time.Instant;
 import java.util.UUID;
 
 public class Channel extends BaseEntity {
@@ -22,7 +21,7 @@ public class Channel extends BaseEntity {
      */
     private boolean isPublic;
 
-    public Channel(UUID id, Instant createdAt, Instant updatedAt) {
+    public Channel(UUID id, Long createdAt, Long updatedAt) {
         this.id = id;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;

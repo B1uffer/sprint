@@ -2,7 +2,6 @@ package com.b1uffer.user.entity;
 
 import com.b1uffer.base.BaseEntity;
 
-import java.time.Instant;
 import java.util.UUID;
 
 public class User extends BaseEntity {
@@ -29,7 +28,7 @@ public class User extends BaseEntity {
     /**
      * setter to BaseEntity
      */
-    public User(UUID id, Instant createdAt, Instant updatedAt) {
+    public User(UUID id, Long createdAt, Long updatedAt) {
         this.id = id;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
