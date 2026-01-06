@@ -36,6 +36,7 @@ public class BasicUserService implements UserService {
 
     @Override
     public User read(UUID userId) {
+
         if(userId == null) {
             throw new IllegalArgumentException("userId cannot be null");
         }
