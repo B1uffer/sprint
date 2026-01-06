@@ -27,8 +27,19 @@ public class BasicMessageService implements MessageService {
         if(user == null) {
             throw new IllegalArgumentException("Something was wrong with the user");
         }
+
         Message message = new Message(text, user);
         messageRepository.put(message.getId(), message);
+        return message;
+    }
+
+    @Override
+    public Message read(UUID messageId) {
+        if(!messageRepository.containsKey(messageId)) {
+            throw new IllegalArgumentException("message not found");
+        }
+
+        Message message = messageRepository.get(messageId);
         return message;
     }
 }
