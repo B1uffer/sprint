@@ -7,6 +7,6 @@ import java.util.UUID;
 public interface UserService {
     User create(String name, String password, String description, String image);
     User read(UUID userId);
-    User update(String name, String password, String description, String image);
+    User update(UUID id, String name, String password, String description, String image);
     void delete(UUID userId);
 }
