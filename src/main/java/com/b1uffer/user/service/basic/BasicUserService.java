@@ -46,8 +46,8 @@ public class BasicUserService implements UserService {
     }
 
     @Override
-    public User update(UUID id, String name, String password, String description, String image) {
-        User user = userRepository.get(id);
+    public User update(UUID userId, String name, String password, String description, String image) {
+        User user = userRepository.get(userId);
 
         if(name == null) {
             name = user.getName();
@@ -62,12 +62,16 @@ public class BasicUserService implements UserService {
         if(description == null) {
             description = user.getDescription();
         }
+        user.updateDescription(description);
 
         if(image == null) {
             image = user.getImage();
         }
+        user.updateImage(image);
 
-        return null;
+        user.setUpdatedAt();
+
+        return user;
     }
 
     @Override
