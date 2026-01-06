@@ -42,6 +42,10 @@ public class User extends BaseEntity {
     /**
      * getter
      */
+    public UUID getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -61,19 +65,19 @@ public class User extends BaseEntity {
     /**
      * update(setter)
      */
-    public void setName(String name) {
+    public void updateName(String name) {
         this.name = name;
     }
 
-    public void setPassword(String password) {
+    public void updatePassword(String password) {
         this.password = password;
     }
 
-    public void setDescription(String description) {
+    public void updateDescription(String description) {
         this.description = description;
     }
 
-    public void setImage(String image) {
+    public void updateImage(String image) {
         this.image = image;
     }
 

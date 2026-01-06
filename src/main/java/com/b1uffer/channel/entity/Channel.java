@@ -35,6 +35,10 @@ public class Channel extends BaseEntity {
     /**
      * getter
      */
+    public UUID getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

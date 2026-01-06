@@ -29,6 +29,10 @@ public class Message extends BaseEntity {
     /**
      * getter
      */
+    public UUID getId() {
+        return id;
+    }
+
     public String getText() {
         return text;
     }
