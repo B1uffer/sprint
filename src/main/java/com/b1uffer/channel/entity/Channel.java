@@ -21,18 +21,20 @@ public class Channel extends BaseEntity {
      */
     private boolean isPublic;
 
-    public Channel(UUID id, Long createdAt, Long updatedAt) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public Channel(String name, String description, boolean isPublic) {
+    /**
+     * 생성자
+     */
+    public Channel(String name, String description) {
+        id = UUID.randomUUID();
+        createdAt = System.currentTimeMillis();
         this.name = name;
         this.description = description;
-        this.isPublic = isPublic;
+        this.isPublic = true; // default는 public
     }
 
+    /**
+     * getter
+     */
     public String getName() {
         return name;
     }
@@ -43,5 +45,21 @@ public class Channel extends BaseEntity {
 
     public boolean getIsPublic() {
         return isPublic;
+    }
+
+
+    /**
+     * update 함수 정의(setter)
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
     }
 }
