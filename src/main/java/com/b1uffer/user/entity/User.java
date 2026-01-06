@@ -2,6 +2,8 @@ package com.b1uffer.user.entity;
 
 import com.b1uffer.base.BaseEntity;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.UUID;
 
 public class User extends BaseEntity {
@@ -26,18 +28,11 @@ public class User extends BaseEntity {
     private String image;
 
     /**
-     * setter to BaseEntity
-     */
-    public User(UUID id, Long createdAt, Long updatedAt) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    /**
-     * setter
+     * 생성자
      */
     public User(String name, String password, String description, String image) {
+        id = UUID.randomUUID();
+        createdAt = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         this.name = name;
         this.password = password;
         this.description = description;
@@ -61,5 +56,28 @@ public class User extends BaseEntity {
 
     public String getImage() {
         return image;
+    }
+
+    /**
+     * update(setter)
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setUpdatedAt() {
+        updatedAt = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 }
