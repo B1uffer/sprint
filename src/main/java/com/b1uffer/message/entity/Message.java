@@ -17,15 +17,11 @@ public class Message extends BaseEntity {
     private User user;
 
     /**
-     * setter
+     * 생성자
      */
-    public Message(UUID id, Long createdAt, Long updatedAt) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
     public Message(String text, User user) {
+        id = UUID.randomUUID();
+        createdAt = System.currentTimeMillis();
         this.text = text;
         this.user = user;
     }
@@ -39,5 +35,20 @@ public class Message extends BaseEntity {
 
     public User getUser() {
         return user;
+    }
+
+    /**
+     * update 메서드(setter)
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setUpdatedAt() {
+        updatedAt = System.currentTimeMillis();
     }
 }
