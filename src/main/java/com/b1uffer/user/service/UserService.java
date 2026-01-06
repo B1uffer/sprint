@@ -9,4 +9,5 @@ public interface UserService {
     User read(UUID userId);
     User update(UUID userId, String name, String password, String description, String image);
     void delete(UUID userId);
+    User getUser(UUID userId);
 }
