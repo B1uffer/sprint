@@ -76,6 +76,9 @@ public class BasicUserService implements UserService {
 
     @Override
     public void delete(UUID userId) {
-
+        if(userId == null) {
+            throw new IllegalArgumentException("userId cannot be null");
+        }
+        userRepository.remove(userId);
     }
 }
