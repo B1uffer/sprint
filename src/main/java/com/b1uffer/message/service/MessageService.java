@@ -7,4 +7,5 @@ import java.util.UUID;
 public interface MessageService {
     Message create(String text, UUID userId);
     Message read(UUID messageId);
+    void delete(UUID messageId);
 }

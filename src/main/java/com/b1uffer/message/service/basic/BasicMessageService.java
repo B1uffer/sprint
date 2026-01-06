@@ -42,4 +42,13 @@ public class BasicMessageService implements MessageService {
         Message message = messageRepository.get(messageId);
         return message;
     }
+
+    @Override
+    public void delete(UUID messageId) {
+        if(!messageRepository.containsKey(messageId)) {
+            throw new IllegalArgumentException("message not found");
+        }
+        messageRepository.remove(messageId);
+        System.out.println("message deleted");
+    }
 }
