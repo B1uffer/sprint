@@ -1,0 +1,74 @@
+package com.b1uffer.message.service.basic;
+
+import com.b1uffer.message.entity.Message;
+import com.b1uffer.message.service.MessageService;
+import com.b1uffer.user.entity.User;
+import com.b1uffer.user.service.UserService;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+public class BasicMessageService implements MessageService {
+    private final Map<UUID, Message> messageRepository = new HashMap<>();
+    private final UserService userService;
+
+    public BasicMessageService(UserService userService) {
+        this.userService = userService;
+    }
+
+    @Override
+    public Message create(String text, UUID userId) {
+        if(text == null) {
+            return null;
+        }
+
+        User user = userService.getUser(userId);
+        if(user == null) {
+            throw new IllegalArgumentException("Something was wrong with the user");
+        }
+
+        Message message = new Message(text, user);
+        messageRepository.put(message.getId(), message);
+        return message;
+    }
+
+    @Override
+    public Message read(UUID messageId) {
+        if(!messageRepository.containsKey(messageId)) {
+            throw new IllegalArgumentException("message not found");
+        }
+
+        Message message = messageRepository.get(messageId);
+        return message;
+    }
+
+    @Override
+    public Message update(UUID userId, UUID messageId, String text) {
+        User user = userService.getUser(userId);
+        if(user == null) {
+            throw new IllegalArgumentException("Something was wrong with the user");
+        }
+
+        Message message = messageRepository.get(messageId);
+        if(message == null) {
+            throw new IllegalArgumentException("message not found");
+        }
+
+        if(text == null) {
+            return null;
+        }
+        message.setText(text);
+        System.out.println("수정된 메시지 내용" + message.getText());
+        return message;
+    }
+
+    @Override
+    public void delete(UUID messageId) {
+        if(!messageRepository.containsKey(messageId)) {
+            throw new IllegalArgumentException("message not found");
+        }
+        messageRepository.remove(messageId);
+        System.out.println("message deleted");
+    }
+}
