@@ -22,4 +22,15 @@ public class BasicChannelService implements ChannelService {
         channelRepository.put(channel.getId(), channel);
         return channel;
     }
+
+    @Override
+    public Channel read(UUID channelId) {
+        if(channelRepository.get(channelId) == null) {
+            throw new IllegalArgumentException("channel with id " + channelId + " not found!");
+        }
+
+        Channel channel = channelRepository.get(channelId);
+        System.out.println("channel found! channel name : " + channel.getName());
+        return channel;
+    }
 }
