@@ -65,4 +65,19 @@ public class BasicChannelService implements ChannelService {
         channelRepository.remove(channelId);
         System.out.println("channel deleted, channelId : " + channelId);
     }
+
+    @Override
+    public Channel changeChannelTypePrivate(UUID channelId, boolean isPublic) {
+        if(isPublic) { // isPublic == true
+            return null;
+        }
+        if(channelId == null) {
+            throw new IllegalArgumentException("channelId cannot be null");
+        }
+
+        Channel channel = channelRepository.get(channelId);
+        channel.setIsPublic(isPublic); // false
+        System.out.println("channel Type changed! channel name : " + channel.getName() + ", channel type : " + channel.getIsPublic());
+        return channel;
+    }
 }

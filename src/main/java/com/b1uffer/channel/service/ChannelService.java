@@ -9,4 +9,5 @@ public interface ChannelService {
     Channel read(UUID channelId);
     Channel update(UUID channelId, String newName, String newDescription);
     void delete(UUID channelId);
+    Channel changeChannelTypePrivate(UUID channelId, boolean isPublic);
 }
