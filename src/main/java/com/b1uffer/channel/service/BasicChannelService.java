@@ -33,4 +33,24 @@ public class BasicChannelService implements ChannelService {
         System.out.println("channel found! channel name : " + channel.getName());
         return channel;
     }
+
+    @Override
+    public Channel update(UUID channelId, String newName, String newDescription) {
+        if(channelId == null) {
+            throw new IllegalArgumentException("channelId cannot be null");
+        }
+        if(channelRepository.get(channelId) == null) {
+            throw new IllegalArgumentException("channel with id " + channelId + " not found!");
+        }
+
+        Channel channel = channelRepository.get(channelId);
+
+        if(newName == null) {
+            throw new IllegalArgumentException("name cannot be null");
+        }
+        channel.setName(newName);
+        channel.setDescription(newDescription);
+        System.out.println("channel updated! channel name : " + channel.getName() + ", channel description : " + channel.getDescription());
+        return channel;
+    }
 }
