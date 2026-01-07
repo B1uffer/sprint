@@ -5,6 +5,7 @@ import com.b1uffer.user.service.UserService;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class BasicUserService implements UserService {
@@ -30,6 +31,7 @@ public class BasicUserService implements UserService {
 
         User user = new User(name, password, description, image);
         userRepository.put(user.getId(), user);
+        System.out.println("User created, name : " + user.getName() + ", password : " + user.getPassword() + ", description : " + user.getDescription() + ", image : " + user.getImage());
 
         return user;
     }
@@ -42,6 +44,7 @@ public class BasicUserService implements UserService {
         }
 
         User user = userRepository.get(userId);
+        System.out.println("userId : " + user.getId() + ", name : " + user.getName() + ", password : " + user.getPassword() + ", description : " + user.getDescription() + ", image : " + user.getImage());
         return user;
     }
 
@@ -49,27 +52,28 @@ public class BasicUserService implements UserService {
     public User update(UUID userId, String name, String password, String description, String image) {
         User user = userRepository.get(userId);
 
-        if(name == null) {
+        if(name == null || Objects.equals(user.getName(), name)) {
             name = user.getName();
         }
         user.updateName(name);
 
-        if(password == null) {
+        if(password == null || Objects.equals(user.getPassword(), password)) {
             password = user.getPassword();
         }
         user.updatePassword(password);
 
-        if(description == null) {
+        if(description == null || Objects.equals(user.getDescription(), description)) {
             description = user.getDescription();
         }
         user.updateDescription(description);
 
-        if(image == null) {
+        if(image == null || Objects.equals(user.getImage(), image)) {
             image = user.getImage();
         }
         user.updateImage(image);
 
         user.setUpdatedAt();
+        System.out.println("update complete, name : " + user.getName() + ", password : " + user.getPassword() + ", description : " + user.getDescription() + ", image : " + user.getImage() + ", updatedAt : " + user.getUpdatedAt());
 
         return user;
     }
@@ -80,6 +84,7 @@ public class BasicUserService implements UserService {
             throw new IllegalArgumentException("userId cannot be null");
         }
         userRepository.remove(userId);
+        System.out.println("delete complete, id : " + userId + ", values : " + userRepository.size());
     }
 
     @Override
