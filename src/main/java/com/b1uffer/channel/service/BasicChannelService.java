@@ -80,4 +80,20 @@ public class BasicChannelService implements ChannelService {
         System.out.println("channel Type changed! channel name : " + channel.getName() + ", channel type : " + channel.getIsPublic());
         return channel;
     }
+
+    @Override
+    public Channel changeChannelTypePublic(UUID channelId, boolean isPublic) {
+        if(isPublic == false) {
+            return null;
+        }
+
+        if(channelId == null) {
+            throw new IllegalArgumentException("channelId cannot be null");
+        }
+
+        Channel channel = channelRepository.get(channelId);
+        channel.setIsPublic(isPublic);
+        System.out.println("channel Type changed! channel name : " + channel.getName() + ", channel type : " + channel.getIsPublic());
+        return channel;
+    }
 }
