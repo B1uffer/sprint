@@ -53,4 +53,16 @@ public class BasicChannelService implements ChannelService {
         System.out.println("channel updated! channel name : " + channel.getName() + ", channel description : " + channel.getDescription());
         return channel;
     }
+
+    @Override
+    public void delete(UUID channelId) {
+        if(channelId == null) {
+            throw new IllegalArgumentException("channelId cannot be null");
+        }
+        if(channelRepository.get(channelId) == null) {
+            throw new IllegalArgumentException("channel with id " + channelId + " not found!");
+        }
+        channelRepository.remove(channelId);
+        System.out.println("channel deleted, channelId : " + channelId);
+    }
 }

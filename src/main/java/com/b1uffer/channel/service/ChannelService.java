@@ -8,4 +8,5 @@ public interface ChannelService {
     Channel create(String name, String description);
     Channel read(UUID channelId);
     Channel update(UUID channelId, String newName, String newDescription);
+    void delete(UUID channelId);
 }
