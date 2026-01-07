@@ -62,6 +62,10 @@ public class User extends BaseEntity {
         return image;
     }
 
+    public Long getUpdatedAt() {
+        return updatedAt;
+    }
+
     /**
      * update(setter)
      */
