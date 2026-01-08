@@ -20,6 +20,7 @@ public class BasicChannelService implements ChannelService {
 
         Channel channel = new Channel(name, description);
         channelRepository.put(channel.getId(), channel);
+        System.out.println("channel created! id : " + channel.getId() + ", name : " + channel.getName() + ", description : " + channel.getDescription());
         return channel;
     }
 
@@ -30,7 +31,7 @@ public class BasicChannelService implements ChannelService {
         }
 
         Channel channel = channelRepository.get(channelId);
-        System.out.println("channel found! channel name : " + channel.getName());
+        System.out.println("channel found! channel id : " + channel.getId() + ", channel name : " + channel.getName());
         return channel;
     }
 
