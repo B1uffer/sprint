@@ -34,6 +34,6 @@ public class JavaApplication {
         Message message = messageService.create("messageText", messageUser.getId());
         messageService.read(message.getId());
         messageService.update(messageUser.getId(), message.getId(), "updatedMessageText");
-        messageService.delete(messageUser.getId());
+        messageService.delete(message.getId());
     }
 }
