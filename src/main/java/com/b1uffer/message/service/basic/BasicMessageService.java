@@ -30,6 +30,7 @@ public class BasicMessageService implements MessageService {
 
         Message message = new Message(text, user);
         messageRepository.put(message.getId(), message);
+        System.out.println("message Id : " + message.getId() + ", message : " + message.getText() + ", message user : " + message.getUser());
         return message;
     }
 
@@ -40,6 +41,7 @@ public class BasicMessageService implements MessageService {
         }
 
         Message message = messageRepository.get(messageId);
+        System.out.println("READ messageId : " + messageId + ", message : " + message.getText() + ", message user : " + message.getUser());
         return message;
     }
 
@@ -59,12 +61,13 @@ public class BasicMessageService implements MessageService {
             return null;
         }
         message.setText(text);
-        System.out.println("수정된 메시지 내용" + message.getText());
+        System.out.println("UPDATE messageId : " + message.getId() + ", update message : " + message.getText());
         return message;
     }
 
     @Override
     public void delete(UUID messageId) {
+        System.out.println("DELETE messageId : " + messageId);
         if(!messageRepository.containsKey(messageId)) {
             throw new IllegalArgumentException("message not found");
         }
